@@ -1,0 +1,19 @@
+body {
+  text-align: center;
+}
+table {
+  margin: 1em auto;
+  border-collapse: collapse;
+}
+table caption {
+  width: 150px;
+  margin-bottom: 0.75em;
+}
+table th,
+table td {
+  padding: 0.5em;
+}
+table thead tr,
+tbody tr:not(:last-child) {
+  border-bottom: 1px solid black;
+}

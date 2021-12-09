@@ -15,24 +15,30 @@ const displayBooks = () => {
 if (bookList) {
   displayBooks();
 }
-const validateAuthor = () => {
-  if (document.getElementById("author").value.length > 3) {
-    return true;
+const isValid = (string) => {
+  let isValid = true;
+  if (string.length <= 3) {
+    alert("Autor oraz tytuł muszą być dłuższe niż 3 litery");
+    isValid = false;
   }
-  window.alert("Autor nie musi składać się z więcje niż 3 znaków");
-  return false;
+  if (/\d/.test(string)) {
+    alert("Autor oraz tytuł nie mogą zwierać cyfer");
+    isValid = false;
+  }
+  return isValid;
 };
 const bookForm = document.getElementById("bookForm");
 const addBook = (e) => {
   e.preventDefault();
-  const isAuthorValid = validateAuthor();
-  if (!isAuthorValid) {
-    return;
-  }
   const title = document.getElementById("title").value;
   const author = document.getElementById("author").value;
   const priority = document.getElementById("priority").value;
   const category = document.getElementById("category").value;
+  const isAuthorValid = isValid(author);
+  const isTitleValid = isValid(title);
+  if (!isAuthorValid || !isTitleValid) {
+    return;
+  }
 
   const newRecord = {
     title: title,

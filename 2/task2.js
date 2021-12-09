@@ -15,10 +15,9 @@ const displayBooks = () => {
 if (bookList) {
   displayBooks();
 }
-const isValid = (string) => {
+const isValid = (string, minLength) => {
   let isValid = true;
-  if (string.length <= 3) {
-    alert("Autor oraz tytuł muszą być dłuższe niż 3 litery");
+  if (string.length <= minLength) {
     isValid = false;
   }
   if (/\d/.test(string)) {
@@ -34,8 +33,9 @@ const addBook = (e) => {
   const author = document.getElementById("author").value;
   const priority = document.getElementById("priority").value;
   const category = document.getElementById("category").value;
-  const isAuthorValid = isValid(author);
-  const isTitleValid = isValid(title);
+  const isAuthorValid = isValid(author, 3);
+  const isTitleValid = isValid(title, 1);
+
   if (!isAuthorValid || !isTitleValid) {
     return;
   }
